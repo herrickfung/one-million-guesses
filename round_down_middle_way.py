@@ -11,41 +11,41 @@ writer.writerow(['trial', 'No_of_Guesses', 'Answer', 'GuessList'])
 list = []
 
 for i in range(100):
-	list.append(i + 1)
+    list.append(i + 1)
 
 
 def game():
-	answer = random.choice(list)
-	guesslist = []
+    answer = random.choice(list)
+    guesslist = []
 
-	lower = list[0]
-	upper = list[-1]
+    lower = list[0]
+    upper = list[-1]
 
-	guess = math.floor((lower + upper) / 2)
-	guesslist.append(guess)
+    guess = math.floor((lower + upper) / 2)
+    guesslist.append(guess)
 
-	for j in range(100):
+    for j in range(100):
 
-		if guess > answer:
-			upper = guess
-			guess = math.floor((lower + upper) / 2)
-			guesslist.append(guess)
-			j += 1
+        if guess > answer:
+            upper = guess
+            guess = math.floor((lower + upper) / 2)
+            guesslist.append(guess)
+            j += 1
 
-		elif guess < answer:
-			lower = guess
-			guess = math.floor((lower + upper) / 2)
-			guesslist.append(guess)
-			j += 1
+        elif guess < answer:
+            lower = guess
+            guess = math.floor((lower + upper) / 2)
+            guesslist.append(guess)
+            j += 1
 
-		else:
-			save = len(guesslist) 
-			writer.writerow([(k + 1), save, answer, guesslist])
-			break
+        else:
+            save = len(guesslist)
+            writer.writerow([(k + 1), save, answer, guesslist])
+            break
 
 
 if __name__ == '__main__':
-	for k in range(1000000):
-		game()
-		k += 1
-	logfile.close()
+    for k in range(1000000):
+        game()
+        k += 1
+    logfile.close()
